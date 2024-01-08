@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/Herm71/casaluna-core-functionality/compare/v1.1.1...v1.1.2) (2024-01-08)
+
+
+### Bug Fixes
+
+* :fire: Remove commented code that was making trouble. ([a939c1e](https://github.com/Herm71/casaluna-core-functionality/commit/a939c1efe6c45e568684c48401cf5d9615b770ec))
+
 ### [1.1.1](https://github.com/Herm71/casaluna-core-functionality/compare/v1.1.0...v1.1.1) (2024-01-08)
 
 
