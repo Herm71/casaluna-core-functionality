@@ -57,18 +57,3 @@ function casaluna_show_current_year(){
 }
 
 add_shortcode('show-current-year', 'casaluna_show_current_year');
-
-/**
- * Casa Luna Social
- * <i class="fa-regular fa-envelope"></i>
- */
-// function cl_social(){
-// 	$socials = array('regular/envelope','brands/facebook','brands/airbnb');
-// 	foreach ( $socials as $social){
-// 		$name = explode('/', $social);
-// 		$items = "<p>" . $name[0] . "and" . $name[1] . "</p>"
-// 		return $items;
-// 	}
-// }
-
-// add_shortcode('casa-luna-social', 'cl_social');
