@@ -24,20 +24,6 @@
 
  */
 
-
-
-/**
- * Test function
- */
-
-function say_hello() {
-
-return 'Hello';
-
-}
-
-add_shortcode('say-hello', 'say_hello');
-
 /**
  * Show Current Year
  *
