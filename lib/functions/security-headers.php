@@ -14,7 +14,7 @@ function casaluna_additional_securityheaders( $headers )
         $headers['X-Content-Type-Options']  = 'nosniff';
         $headers['X-XSS-Protection']        = '1; mode=block';
         $headers['Permissions-Policy']      = 'geolocation=(self), microphone=(self), camera=(self)';
-        $headers['Content-Security-Policy'] = "default-src 'self' 'unsafe-inline' 'unsafe-eval' http://* *.googletagmanager.com *.siteimproveanalytics.com *.pantheonsite.io *.gravatar.com *.google-analytics.com ajax.googleapis.com use.fontawesome.com *.google.com *.netlify.com *.unpkg.com fonts.googleapis.com fonts.gstatic.com unpkg.com *.fontawesome.com; frame-src 'self' *.youtube.com *.google.com;object-src 'none';frame-ancestors 'self' *.google.com *.youtube.com";
+        $headers['Content-Security-Policy'] = "default-src 'self' 'unsafe-inline' 'unsafe-eval' http://* *.googletagmanager.com *.siteimproveanalytics.com *.pantheonsite.io *.gravatar.com *.google-analytics.com ajax.googleapis.com use.fontawesome.com *.google.com *.netlify.com *.unpkg.com fonts.googleapis.com fonts.gstatic.com unpkg.com *.fontawesome.com data: blob; frame-src 'self' *.youtube.com *.google.com;object-src 'none';frame-ancestors 'self' *.google.com *.youtube.com";
         $headers['X-Frame-Options']         = 'SAMEORIGIN';
     }
 
