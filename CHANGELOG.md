@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/Herm71/casaluna-core-functionality/compare/v1.1.3...v1.2.0) (2024-01-09)
+
+
+### Features
+
+* :sparkles: yes ([99d0ab2](https://github.com/Herm71/casaluna-core-functionality/commit/99d0ab2f9c855b8f4c5335242ecb24e3f1ed64f6))
+
+
+### Bug Fixes
+
+* :ambulance: Fix blocked resources in CSP ([18db772](https://github.com/Herm71/casaluna-core-functionality/commit/18db772713437c1c517762aa14f45e5437d3c2c7))
+
 ### [1.1.3](https://github.com/Herm71/casaluna-core-functionality/compare/v1.1.2...v1.1.3) (2024-01-08)
 
 
