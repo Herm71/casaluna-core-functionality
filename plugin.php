@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/Herm71/casaluna-core-functionality.git
  * GitHub Plugin URI: https://github.com/Herm71/casaluna-core-functionality
  * Description: Contains custom functionality. Theme independent.
- * Version: 1.2.1
+ * Version: 1.2.3
  * Author: Jason Chafin
  * Author URI: https://github.com/Herm71
  * License: GPL2
