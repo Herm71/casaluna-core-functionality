@@ -27,8 +27,8 @@ if ( file_exists( CL_DIR . '/lib/functions/general.php' ) ) {
 }
 
 // Github Updater.
-if ( file_exists( CL_DIR . '/lib/functions/github-update.php' ) ) {
-	include_once CL_DIR . '/lib/functions/github-update.php';
+if ( file_exists( CL_DIR . '/lib/functions/github-update-checker-two.php' ) ) {
+	include_once CL_DIR . '/lib/functions/github-update-checker-two.php';
 }
 
 // Shortcodes.
