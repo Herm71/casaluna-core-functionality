@@ -1,11 +1,17 @@
 <?php
-
 /**
  * Security Headers
-
+ *
  * This file contains the functions necessary to add security headers to the site.
-
+ *
  * see: https://pantheon.io/docs/wordpress-best-practices#security-headers
+ *
+ * @package   Casaluna_Core_Functionality
+ * @since     1.0.0
+ * @link      https://github.com/Herm71/casaluna-core-functionality.git
+ * @author    Jason Chafin
+ * @copyright Copyright (c) 2024, Jason Chafin
+ * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 function casaluna_additional_securityheaders( $headers )
 {

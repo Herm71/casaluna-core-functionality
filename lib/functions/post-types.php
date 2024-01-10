@@ -4,7 +4,7 @@
  *
  * This file registers any custom post types
  *
- * @package   Core_Functionality
+ * @package   Casaluna_Core_Functionality
  * @since     1.0.0
  * @link      https://github.com/Herm71/casaluna-core-functionality.git
  * @author    Jason Chafin

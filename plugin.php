@@ -26,6 +26,11 @@ if ( file_exists( CL_DIR . '/lib/functions/general.php' ) ) {
 	include_once CL_DIR . '/lib/functions/general.php';
 }
 
+// Github Updater.
+if ( file_exists( CL_DIR . '/lib/functions/github-update.php' ) ) {
+	include_once CL_DIR . '/lib/functions/github-update.php';
+}
+
 // Shortcodes.
 // if ( file_exists( CL_DIR . '/lib/functions/shortcodes.php' ) ) {
 // 	include_once CL_DIR . '/lib/functions/shortcodes.php';
