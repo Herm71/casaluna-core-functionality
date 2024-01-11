@@ -4,6 +4,8 @@
 
 This the core functionality [WordPress](https://wordpress.org) plugin for the [**Casa Luna**](https://casalunayelapa.com) website. This theme independent plugin keeps, custom post-types, short-codes, security-headers and other site-based functions out of the theme's code. This ensures that a future theme change does not affect the site's core functionality.
 
+## Features
+
 This is plugin provides the following functionality in the following files:
 
 * `general.php` -- for any general functions you would write
