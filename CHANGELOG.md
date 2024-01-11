@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.4](https://github.com/Herm71/casaluna-core-functionality/compare/v1.2.3...v1.2.4) (2024-01-11)
+
+
+### Bug Fixes
+
+* :art: include GTM in plugin ([beab6d8](https://github.com/Herm71/casaluna-core-functionality/commit/beab6d8ff0e4ca656121f1f4bf349d06f44603f1))
+* :fire: Remove xml-rpc link from <head> as it's already removed. Messes with a11y ([06a54d9](https://github.com/Herm71/casaluna-core-functionality/commit/06a54d985c19efd1534c79ea2aa8acd130134274))
+* :zap: replace GA script with GTM script which implements GA4 ([b2c6265](https://github.com/Herm71/casaluna-core-functionality/commit/b2c6265ad55f33a8a1deb0493f04810b4272358b))
+
 ### [1.2.3](https://github.com/Herm71/casaluna-core-functionality/compare/v1.2.2...v1.2.3) (2024-01-10)
 
 ### [1.2.2](https://github.com/Herm71/casaluna-core-functionality/compare/v1.2.1...v1.2.2) (2024-01-10)
