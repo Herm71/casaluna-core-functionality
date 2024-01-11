@@ -4,7 +4,7 @@
  *
  * This file contains any general functions
  *
- * @package   casaluna_Custom_Functionality
+ * @package   Casaluna_Custom_Functionality
  * @since     1.0.0
  * @link      https://github.com/Herm71/casaluna-core-functionality.git
  * @author    Jason Chafin

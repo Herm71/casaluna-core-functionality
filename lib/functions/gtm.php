@@ -1,9 +1,15 @@
 <?php
-
 /**
  * Google Tag Manager
-
+ *
  * This file contains the functions necessary to add the casaluna Google Analytics and Tag Manager snippets to the site.
+ *
+ * @package   Casaluna_Custom_Functionality
+ * @since     1.0.0
+ * @link      https://github.com/Herm71/casaluna-core-functionality.git
+ * @author    Jason Chafin
+ * @copyright Copyright (c) 2023, Blackbird Consulting
+ * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
 add_action('wp_head', 'casaluna_google_tag_manager_head', -1 );
