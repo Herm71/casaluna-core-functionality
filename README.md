@@ -1,5 +1,7 @@
 # Casa Luna Core Functionality Plugin
 
+![GitHub Release](https://img.shields.io/github/v/release/Herm71/casaluna-core-functionality?logo=github) ![GitHub issues](https://img.shields.io/github/issues/Herm71/casaluna-core-functionality?logo=github)
+
 This the core functionality plugin for the **Casa Luna** website. This theme independent plugin keeps, custom post-types, short-codes and other site-based functions out of the theme's code. This ensures that a future theme change does not affect the site's core functionality.
 
 This is plugin provides the following functionality in the following files:
