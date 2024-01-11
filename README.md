@@ -2,7 +2,7 @@
 
 ![GitHub Release](https://img.shields.io/github/v/release/Herm71/casaluna-core-functionality?logo=github) ![GitHub issues](https://img.shields.io/github/issues/Herm71/casaluna-core-functionality?logo=github) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Herm71/casaluna-core-functionality/release.yml?logo=github)
 
-This the core functionality [WordPress](https://wordpress.org) plugin for the **Casa Luna** website. This theme independent plugin keeps, custom post-types, short-codes, security-headers and other site-based functions out of the theme's code. This ensures that a future theme change does not affect the site's core functionality.
+This the core functionality [WordPress](https://wordpress.org) plugin for the [**Casa Luna**](https://casalunayelapa.com) website. This theme independent plugin keeps, custom post-types, short-codes, security-headers and other site-based functions out of the theme's code. This ensures that a future theme change does not affect the site's core functionality.
 
 This is plugin provides the following functionality in the following files:
 
