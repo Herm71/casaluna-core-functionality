@@ -1,29 +1,16 @@
 <?
-
 /**
-
- * Custom Shortcodes
-
+ * Shortcodes
  *
-
- * This file contains any custom shortcodes
-
+ * This file contains custom shortcodes
  *
-
- * @package      Core_Functionality
-
- * @since        1.0.0
-
- * @link         https://github.com/Herm71/blackbird-core-functionality-plugin.git
-
- * @author       Jason Chafin <Jason@blackbirdconsult.com>
-
- * @copyright    Copyright (c) 2012, Jason Chafin
-
- * @license      http://opensource.org/licenses/gpl-2.0.php GNU Public License
-
+ * @package   Casaluna_Custom_Functionality
+ * @since     1.0.0
+ * @link      https://github.com/Herm71/casaluna-core-functionality.git
+ * @author    Jason Chafin
+ * @copyright Copyright (c) 2015, Blackbird Consulting
+ * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
-
 /**
  * Show Current Year
  *

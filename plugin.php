@@ -40,3 +40,8 @@ if ( file_exists( CL_DIR . '/lib/functions/disable-xmlrpc.php' ) ) {
 if ( file_exists( CL_DIR . '/lib/functions/security-headers.php' ) ) {
 	include_once CL_DIR . '/lib/functions/security-headers.php';
 }
+
+// Google Tag Manager
+if ( file_exists( CL_DIR . '/lib/functions/gtm.php' ) ) {
+	include_once CL_DIR . '/lib/functions/gtm.php';
+}
