@@ -8,15 +8,15 @@ This the core functionality [WordPress](https://wordpress.org) plugin for the [*
 
 This is plugin provides the following functionality in the following files:
 
-* `general.php` -- for any general functions you would write
+* `general.php` -- for any general functions
 
-* `post-types.php` -- for registering custom post types (currently not included)
+* `post-types.php` -- registers custom post types (currently not included)
 
 * `shortcodes.php` -- for writing custom shortcodes
 
 * `disable-xmlrpc.php` -- disables XMLRPC to [prevent `xml-rpc` attacks](https://pantheon.io/docs/wordpress-best-practices#avoid-xml-rpc-attacks), per best practices
 
-* `gtm.php` -- enqueue's Google Tag Manager
+* `gtm.php` -- Google Tag Manager
 
 * `security-headers` -- Security headers and Content Security Policy
 
