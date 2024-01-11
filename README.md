@@ -18,6 +18,21 @@ This is plugin provides the following functionality in the following files:
 
 * `security-headers` -- Security headers and Content Security Policy
 
+## Dependencies
+
+This theme was built using [@wordpress/scripts](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/) and includes additional linting and formatting `dev` dependencies.
+
+## Requirements
+
+* Node/npm
+* Composer
+
+## Installation
+
+* Clone repo
+* `cd` into newly cloned repo directory
+* in terminal run `npm i && composer install`
+
 ## Developer
 
 [@Herm71](https://github.com/Herm71)
