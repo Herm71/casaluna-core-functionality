@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/Herm71/casaluna-core-functionality.git
  * GitHub Plugin URI: https://github.com/Herm71/casaluna-core-functionality
  * Description: Contains custom functionality. Theme independent.
- * Version: 1.2.3
+ * Version: 1.2.4
  * Author: Jason Chafin
  * Author URI: https://github.com/Herm71
  * License: GPL2
@@ -49,4 +49,9 @@ if ( file_exists( CL_DIR . '/lib/functions/disable-xmlrpc.php' ) ) {
 // Security Headers
 if ( file_exists( CL_DIR . '/lib/functions/security-headers.php' ) ) {
 	include_once CL_DIR . '/lib/functions/security-headers.php';
+}
+
+// Google Tag Manager
+if ( file_exists( CL_DIR . '/lib/functions/gtm.php' ) ) {
+	include_once CL_DIR . '/lib/functions/gtm.php';
 }
