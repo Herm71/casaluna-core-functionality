@@ -4,7 +4,7 @@
  *
  * Enables updating the plugin via Github
  *
- * from: https://anchor.host/using-github-to-self-host-updates-for-wordpress-plugins/
+ * from: https://github.com/rudrastyh/misha-update-checker
  *
  * @package   Casaluna_Custom_Functionality
  * @since     1.3.0
@@ -15,145 +15,166 @@
  */
 
 
-namespace WPFreighter;
 
-class Updater {
 
-    public $plugin_slug;
-    public $version;
-    public $cache_key;
-    public $cache_allowed;
+defined( 'ABSPATH' ) || exit;
 
-    public function __construct() {
 
-        if ( defined( 'WP_FREIGHTER_DEV_MODE' ) ) {
-            add_filter('https_ssl_verify', '__return_false');
-            add_filter('https_local_ssl_verify', '__return_false');
-            add_filter('http_request_host_is_external', '__return_true');
-        }
+if( ! class_exists( 'casalunaUpdateChecker' ) ) {
 
-        $this->plugin_slug   = dirname ( plugin_basename( __DIR__ ) );
-        $this->version       = '1.1';
-        $this->cache_key     = 'casaluna_custom_upd';
-        $this->cache_allowed = false;
+	class casalunaUpdateChecker{
 
-        add_filter( 'plugins_api', [ $this, 'info' ], 20, 3 );
-        add_filter( 'site_transient_update_plugins', [ $this, 'update' ] );
-        add_action( 'upgrader_process_complete', [ $this, 'purge' ], 10, 2 );
+		public $plugin_slug;
+		public $version;
+		public $cache_key;
+		public $cache_allowed;
 
-    }
+		public function __construct() {
 
-    public function request(){
+			$this->plugin_slug = plugin_basename( __DIR__ );
+			$this->version = '1.0';
+			$this->cache_key = 'casaluna_custom_upd';
+			$this->cache_allowed = false;
 
-        $remote = get_transient( $this->cache_key );
+			add_filter( 'plugins_api', array( $this, 'info' ), 20, 3 );
+			add_filter( 'site_transient_update_plugins', array( $this, 'update' ) );
+			add_action( 'upgrader_process_complete', array( $this, 'purge' ), 10, 2 );
 
-        if( false === $remote || ! $this->cache_allowed ) {
+		}
 
-            $remote = wp_remote_get( 'https://blackbirdstaging.com/plugin-updates/casaluna-core-functionality/info.json', [
-                    'timeout' => 10,
-                    'headers' => [
-                        'Accept' => 'application/json'
-                    ]
-                ]
-            );
+		public function request(){
 
-            if ( is_wp_error( $remote ) || 200 !== wp_remote_retrieve_response_code( $remote ) || empty( wp_remote_retrieve_body( $remote ) ) ) {
-                return false;
-            }
+			$remote = get_transient( $this->cache_key );
 
-            set_transient( $this->cache_key, $remote, DAY_IN_SECONDS );
+			if( false === $remote || ! $this->cache_allowed ) {
 
-        }
+				$remote = wp_remote_get(
+					'https://blackbirdstaging.com/plugin-updates/casaluna-core-functionality/info.json',
+					array(
+						'timeout' => 10,
+						'headers' => array(
+							'Accept' => 'application/json'
+						)
+					)
+				);
 
-        $remote = json_decode( wp_remote_retrieve_body( $remote ) );
+				if(
+					is_wp_error( $remote )
+					|| 200 !== wp_remote_retrieve_response_code( $remote )
+					|| empty( wp_remote_retrieve_body( $remote ) )
+				) {
+					return false;
+				}
 
-        return $remote;
+				set_transient( $this->cache_key, $remote, DAY_IN_SECONDS );
 
-    }
+			}
 
-    function info( $response, $action, $args ) {
+			$remote = json_decode( wp_remote_retrieve_body( $remote ) );
 
-        // do nothing if you're not getting plugin information right now
-        if ( 'plugin_information' !== $action ) {
-            return $response;
-        }
+			return $remote;
 
-        // do nothing if it is not our plugin
-        if ( empty( $args->slug ) || $this->plugin_slug !== $args->slug ) {
-            return $response;
-        }
+		}
 
-        // get updates
-        $remote = $this->request();
 
-        if ( ! $remote ) {
-            return $response;
-        }
+		function info( $res, $action, $args ) {
 
-        $response = new \stdClass();
+			// print_r( $action );
+			// print_r( $args );
 
-        $response->name           = $remote->name;
-        $response->slug           = $remote->slug;
-        $response->version        = $remote->version;
-        $response->tested         = $remote->tested;
-        $response->requires       = $remote->requires;
-        $response->author         = $remote->author;
-        $response->author_profile = $remote->author_profile;
-        $response->donate_link    = $remote->donate_link;
-        $response->homepage       = $remote->homepage;
-        $response->download_link  = $remote->download_url;
-        $response->trunk          = $remote->download_url;
-        $response->requires_php   = $remote->requires_php;
-        $response->last_updated   = $remote->last_updated;
+			// do nothing if you're not getting plugin information right now
+			if( 'plugin_information' !== $action ) {
+				return $res;
+			}
 
-        $response->sections = [
-            'description'  => $remote->sections->description,
-            'installation' => $remote->sections->installation,
-            'changelog'    => $remote->sections->changelog
-        ];
+			// do nothing if it is not our plugin
+			if( $this->plugin_slug !== $args->slug ) {
+				return $res;
+			}
 
-        if ( ! empty( $remote->banners ) ) {
-            $response->banners = [
-                'low'  => $remote->banners->low,
-                'high' => $remote->banners->high
-            ];
-        }
+			// get updates
+			$remote = $this->request();
 
-        return $response;
+			if( ! $remote ) {
+				return $res;
+			}
 
-    }
+			$res = new stdClass();
 
-    public function update( $transient ) {
+			$res->name = $remote->name;
+			$res->slug = $remote->slug;
+			$res->version = $remote->version;
+			$res->tested = $remote->tested;
+			$res->requires = $remote->requires;
+			$res->author = $remote->author;
+			$res->author_profile = $remote->author_profile;
+			$res->download_link = $remote->download_url;
+			$res->trunk = $remote->download_url;
+			$res->requires_php = $remote->requires_php;
+			$res->last_updated = $remote->last_updated;
 
-        if ( empty($transient->checked ) ) {
-            return $transient;
-        }
+			$res->sections = array(
+				'description' => $remote->sections->description,
+				'installation' => $remote->sections->installation,
+				'changelog' => $remote->sections->changelog
+			);
 
-        $remote = $this->request();
+			if( ! empty( $remote->banners ) ) {
+				$res->banners = array(
+					'low' => $remote->banners->low,
+					'high' => $remote->banners->high
+				);
+			}
 
-        if ( $remote && version_compare( $this->version, $remote->version, '<' ) && version_compare( $remote->requires, get_bloginfo( 'version' ), '<=' ) && version_compare( $remote->requires_php, PHP_VERSION, '<' ) ) {
-            $response              = new \stdClass();
-            $response->slug        = $this->plugin_slug;
-            $response->plugin      = "{$this->plugin_slug}/{$this->plugin_slug}.php";
-            $response->new_version = $remote->version;
-            $response->tested      = $remote->tested;
-            $response->package     = $remote->download_url;
+			return $res;
 
-            $transient->response[ $response->plugin ] = $response;
+		}
 
-        }
+		public function update( $transient ) {
 
-        return $transient;
+			if ( empty($transient->checked ) ) {
+				return $transient;
+			}
 
-    }
+			$remote = $this->request();
 
-    public function purge( $upgrader, $options ) {
+			if(
+				$remote
+				&& version_compare( $this->version, $remote->version, '<' )
+				&& version_compare( $remote->requires, get_bloginfo( 'version' ), '<=' )
+				&& version_compare( $remote->requires_php, PHP_VERSION, '<' )
+			) {
+				$res = new stdClass();
+				$res->slug = $this->plugin_slug;
+				$res->plugin = plugin_basename( __FILE__ ); // misha-update-plugin/misha-update-plugin.php
+				$res->new_version = $remote->version;
+				$res->tested = $remote->tested;
+				$res->package = $remote->download_url;
 
-        if ( $this->cache_allowed && 'update' === $options['action'] && 'plugin' === $options[ 'type' ] ) {
-            // just clean the cache when new plugin version is installed
-            delete_transient( $this->cache_key );
-        }
+				$transient->response[ $res->plugin ] = $res;
 
-    }
+	    }
+
+			return $transient;
+
+		}
+
+		public function purge( $upgrader, $options ){
+
+			if (
+				$this->cache_allowed
+				&& 'update' === $options['action']
+				&& 'plugin' === $options[ 'type' ]
+			) {
+				// just clean the cache when new plugin version is installed
+				delete_transient( $this->cache_key );
+			}
+
+		}
+
+
+	}
+
+	new casalunaUpdateChecker();
 
 }

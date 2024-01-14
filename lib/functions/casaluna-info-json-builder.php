@@ -1,5 +1,7 @@
 <?php
 function casaluna_build_update(){
+	// delete_transient( 'gh-response' );
+	// $local_file_path = 'info.json'; // Specify the desired local file path
 	$github_response = get_transient('gh-response');
 	if( false === $github_response )  {
 		//Github API endpoint for Latest Release
@@ -25,27 +27,27 @@ function casaluna_build_update(){
 		set_transient( 'gh-response', $github_response, DAY_IN_SECONDS );
 
 	}
-	$github_results     = json_decode( wp_remote_retrieve_body( $github_response ) );
-	$release = $github_results->tag_name;
-	$download_url = $github_results->assets[0]->browser_download_url;
-	$author_id = $github_results->author->id;
-	$created_at = $github_results->created_at;
-	$latest_release = $github_results->name;
+	$github_results     = json_decode( wp_remote_retrieve_body( $github_response ), true );
+	$release = $github_results['tag_name'];
+	$download_url = $github_results['assets'][0]['browser_download_url'];
+	$author_id = $github_results['author']['id'];
+	$created_at = $github_results['created_at'];
+	$latest_release = $release;
 	$release_num = explode('v', $latest_release );
 	$version = $release_num[1];
-	$added_raw = $github_results->assets[0]->created_at;
+	$added_raw = $github_results['assets'][0]['created_at'];
 	$added_split_one = explode('T', $added_raw );
 	$added_split_two = explode('Z', $added_split_one[1] );
 	$added_date = $added_split_one[0];
 	$added_time = $added_split_two[0];
 	$added = $added_date.' '.$added_time;
-	$last_updated_raw = $github_results->assets[0]->updated_at;
+	$last_updated_raw = $github_results['assets'][0]['updated_at'];
 	$last_updated_split_one = explode('T', $last_updated_raw );
 	$last_updated_split_two = explode('Z', $last_updated_split_one[1] );
 	$last_updated_date = $last_updated_split_one[0];
 	$last_updated_time = $last_updated_split_two[0];
 	$last_updated = $added_date.' '.$added_time;
-	$latest_release = $github_results->name;
+	$latest_release = $github_results['name'];
 
 	//info.json array
 	$plugin_info = array(
@@ -53,7 +55,6 @@ function casaluna_build_update(){
 	'slug' => 'casaluna-core-functionality',
 	'author' => 'Jason Chafin',
 	'author_profile' => 'https://github.com/Herm71',
-	'donate_link' => 'casaluna-core-functionality',
 	'version' => $version,
 	'download_url' => $download_url,
 	'requires' => '5.6',
@@ -67,8 +68,8 @@ function casaluna_build_update(){
 		'changelog' => '',
 	],
 	'banners' => [
-		'low' => 'https://wpfreighter.com/images/wp-freighter-banner-772x250.webp',
-		'high' => 'https://wpfreighter.com/images/wp-freighter-banner-1544x500.webp'
+		'low' => 'https://blackbirdstaging.com/plugin-updates/casaluna-banner-772x250.webp',
+		'high' => 'https://blackbirdstaging.com/plugin-updates/casaluna-banner-1544x500.webp'
 	],
 	);
 	// header( 'Content-Type: application/json' );
@@ -79,41 +80,26 @@ function casaluna_build_update(){
         return;
     }
 
-    // Save JSON data to a local file
-    $json_file = fopen($local_file_path, 'w');
 
-    if ($json_file === false) {
-        // Handle error if unable to open file for writing
-        echo "Error opening file for writing.";
-        return;
-    }
-
-    // Write JSON data to the file
-    fwrite($json_file, $info_pretty);
-
-    // Close the file
-    fclose($json_file);
-
-    echo "JSON data has been successfully saved to $local_file_path.";
 	// Print data if need to debug
 	echo '<p>Plugin Info</p>';
 	echo '<pre>';
-	print_r($local_file_path);
+	print_r($info_pretty);
 	echo '</pre>';
-	// echo '<p>Field Data from Github()</p>';
-	// echo '<pre>';
-	// // print_r($x);
-	// echo '</pre>';
-	// echo '<p>All Data from Github()</p>';
-	// echo '<pre>';
-	// print_r($github_results);
-	// echo '</pre>';
 
+	echo '<p>All Data from Github()</p>';
+	echo '<pre>';
+	print_r($github_results);
+	echo '</pre>';
+		// echo '<p>Field Data from Github()</p>';
+	// echo '<pre>';
+	// // print_r($version);
+	// echo '</pre>';
 // Example usage:
 // $array_data = $plugin_info;
-$local_file_path = 'info.json'; // Specify the desired local file path
 
-casaluna_build_update($plugin_info, $local_file_path);
+
+// casaluna_build_update($plugin_info, $local_file_path);
 }
 
 add_action ('wp_head', 'casaluna_build_update' );

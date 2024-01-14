@@ -27,8 +27,13 @@ if ( file_exists( CL_DIR . '/lib/functions/general.php' ) ) {
 }
 
 // Github Updater.
-if ( file_exists( CL_DIR . '/lib/functions/github-update-checker-casaluna.php' ) ) {
-	include_once CL_DIR . '/lib/functions/github-update-checker-casaluna.php';
+if ( file_exists( CL_DIR . '/lib/functions/github-update-checker.php' ) ) {
+	include_once CL_DIR . '/lib/functions/github-update-checker.php';
+}
+
+// Plugin Update Info JSON builder.
+if ( file_exists( CL_DIR . '/lib/functions/casaluna-info-json-builder.php' ) ) {
+	include_once CL_DIR . '/lib/functions/casaluna-info-json-builder.php';
 }
 
 // Shortcodes.
